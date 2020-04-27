@@ -5,12 +5,6 @@
 ; キー無効化
 AppsKey::Return ; レジストリでCapsLockをAppsKeyに変更している。CapsLock単体の使用を無効にする
 
-; エクスプローラーの起動
-AppsKey & e::
-    Send, #e ; CapsLock+E -> Win+E
-    Send, {Blind}
-    return
-
 ; ウィンドウを閉じる
 !q::
     Send, {Blind}

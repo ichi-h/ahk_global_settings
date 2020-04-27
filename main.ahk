@@ -13,6 +13,6 @@ SetTitleMatchMode,2
 #UseHook
 
 #Include general.ahk
-; #Include app.ahk
+#Include apps.ahk
 #Include cmd.ahk
 #Include copy_path.ahk
