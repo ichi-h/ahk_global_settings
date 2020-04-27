@@ -3,7 +3,7 @@
 */
 
 ; キー無効化
-AppsKey::Return ; CapsLock単体の使用を無効にする
+AppsKey::Return ; レジストリでCapsLockをAppsKeyに変更している。CapsLock単体の使用を無効にする
 
 ; エクスプローラーの起動
 AppsKey & e::

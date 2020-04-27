@@ -21,22 +21,23 @@
         clipboard := """" . fullpath . """"
     }
     
-    If WinActive("ahk_class Progman")
-    {
-        hBuf := DllCall("user32\FindWindow", "Str", "Progman", "UInt", 0, "UInt")
-        hBuf := DllCall("user32\FindWindowEx", "UInt", hBuf, "UInt", 0, "Str", "SHELLDLL_DefView", "UInt", 0, "UInt")
-        hBuf := DllCall("user32\FindWindowEx", "UInt", hBuf, "UInt", 0, "Str", "SysListView32", "UInt", 0, "UInt")
+    ; If WinActive("ahk_class Progman")
+    ; {
+    ;     hBuf := DllCall("user32\FindWindow", "Str", "Progman", "UInt", 0, "UInt")
+    ;     hBuf := DllCall("user32\FindWindowEx", "UInt", hBuf, "UInt", 0, "Str", "SHELLDLL_DefView", "UInt", 0, "UInt")
+    ;     hBuf := DllCall("user32\FindWindowEx", "UInt", hBuf, "UInt", 0, "Str", "SysListView32", "UInt", 0, "UInt")
 
-        ControlGet, SelFN, List, Selected, , ahk_id %hBuf%
+    ;     ControlGet, SelFN, List, Selected, , ahk_id %hBuf%
+    ;     Clipboard := SelFN
+    ;     MsgBox % SelFN
+    ; }
 
-        MsgBox % SelFN
-    }
-
-    If WinActive("ahk_class WorkerW")
-    {
-        ControlGet, SelFN, List, Selected, SysListView321, ahk_class WorkerW
-        MsgBox % SelFN
-    }
+    ; If WinActive("ahk_class WorkerW")
+    ; {
+    ;     ControlGet, SelFN, List, Selected, SysListView321, ahk_class WorkerW
+    ;     Clipboard := SelFN
+    ;     MsgBox % SelFN
+    ; }
 
     return
 
