@@ -3,6 +3,8 @@
 */
 
 ^+c::
+    Send, {Blind}
+    
     If WinActive("ahk_class CabinetWClass")
     {
         for window in ComObjCreate("Shell.Application").Windows
@@ -14,7 +16,7 @@
             break
         }
         window := ""
-        
+
         StringReplace, fullpath, fullpath, \, /, All
         clipboard := """" . fullpath . """"
     }

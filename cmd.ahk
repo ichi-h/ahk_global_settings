@@ -2,7 +2,9 @@
     Win+CapsLockでcmdの起動
 */
 
-#vkF0::
+#AppsKey::
+    Send, {Blind}
+
     If WinActive("ahk_class CabinetWClass")
     ; エクスプローラーがアクティブな時
     {

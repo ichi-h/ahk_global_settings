@@ -3,13 +3,19 @@
 */
 
 ; キー無効化
-vkF0::Return ; CapsLock単体の使用を無効にする
+AppsKey::Return ; CapsLock単体の使用を無効にする
 
 ; エクスプローラーの起動
-; vkF0 & e::#e ; CapsLock+E -> Win+E
+AppsKey & e::
+    Send, #e ; CapsLock+E -> Win+E
+    Send, {Blind}
+    return
 
 ; ウィンドウを閉じる
-!q::!F4 ; Alt+Q -> Alt + F4
+!q::
+    Send, {Blind}
+    Send, !{F4} ; Alt+Q -> Alt + F4
+    return
 
 ; 仮想デスクトップの遷移
 sc07B::Send,#^{Left}   ; 変換 -> Ctrl+Win+Left
