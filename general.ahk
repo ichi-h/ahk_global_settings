@@ -11,6 +11,6 @@ AppsKey::Return ; レジストリでCapsLockをAppsKeyに変更している。Ca
     Send, !{F4} ; Alt+Q -> Alt + F4
     return
 
-; 仮想デスクトップの遷移
+; 仮想デスクトップの切り替え
 sc07B::Send,#^{Left}   ; 変換 -> Ctrl+Win+Left
 sc079::Send,#^{Right}  ; 無変換 -> Ctrl+Win+Right
