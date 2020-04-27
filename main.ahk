@@ -14,5 +14,5 @@ SetTitleMatchMode,2
 
 #Include general.ahk
 #Include apps.ahk
-#Include cmd.ahk
+#Include bash.ahk
 #Include copy_path.ahk

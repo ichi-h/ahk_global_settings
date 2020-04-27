@@ -1,5 +1,5 @@
 ﻿/*
-    Win+CapsLockでcmdの起動
+    Win+CapsLockでGit Bashの起動
 */
 
 #AppsKey::
@@ -15,7 +15,7 @@
             IfWinActive, % "ahk_id " window.HWND
                 break
         }
-        Run C:/Program Files/Git/git-bash.exe, %fullpath% ; 選択中のファイルのディレクトリでcmdを起動
+        Run C:/Program Files/Git/git-bash.exe, %fullpath% ; 選択中のファイルのディレクトリでbashを起動
         window := ""
 
         return
