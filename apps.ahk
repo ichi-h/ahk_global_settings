@@ -10,4 +10,4 @@ AppsKey & e::
     return
 
 ; 電卓
-#c::Run C:/Windows/System32/calc.exe
+#d::Run C:/Windows/System32/calc.exe

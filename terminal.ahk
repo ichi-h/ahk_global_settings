@@ -1,6 +1,6 @@
 ﻿/*
     # terminal.ahk
-    Win+CapsLockでGit Bashの起動
+    CapsLock+CでGit Bashの起動
 
     ## 注意
     レジストリでCapsLockをAppsKeyに変更しています。
@@ -10,9 +10,9 @@
         - https://stackoverrun.com/ja/q/10815089
 */
 
-#AppsKey::
+AppsKey & c::
     sleep 250
-    
+
     If WinActive("ahk_class CabinetWClass")
     ; エクスプローラーがアクティブな時
     {
