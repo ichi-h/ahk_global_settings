@@ -1,5 +1,5 @@
 ﻿/*
-    Ctrl+Shift+Cで、選択したファイルのパスをコピーする（エクスプローラー限定）
+    Ctrl+Shift+Cで、現在のフォルダーや選択したファイルのパスをコピーする（エクスプローラー限定）
 */
 
 ^+c::
@@ -12,8 +12,12 @@
             fullpath := ""
             for Item in window.Document.SelectedItems
                 fullpath := Item.Path
+            
+            If fullpath = ; 変数が空の時
+                try fullpath := window.Document.Folder.Self.Path
+            
             IfWinActive, % "ahk_id " window.HWND
-            break
+                break
         }
         window := ""
 

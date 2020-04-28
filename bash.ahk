@@ -15,8 +15,9 @@
             IfWinActive, % "ahk_id " window.HWND
                 break
         }
-        Run C:/Program Files/Git/git-bash.exe, %fullpath% ; 選択中のファイルのディレクトリでbashを起動
         window := ""
+        
+        Run C:/Program Files/Git/git-bash.exe, %fullpath% ; 選択中のファイルのディレクトリでbashを起動
 
         return
     }
