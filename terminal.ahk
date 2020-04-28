@@ -3,7 +3,7 @@
     CapsLock+CでGit Bashの起動
 
     ## 注意
-    レジストリでCapsLockをAppsKeyに変更しています。
+    レジストリでCapsLockをAppsKeyに変更しています
 
     ## 参考:
     1. AutohotkeyとWindows 10：現在のエクスプローラパスを取得する方法
@@ -40,6 +40,6 @@ AppsKey & c::
     Else
     ; それ以外の時
     {
-        Run C:/Program Files/Git/git-bash.exe, C:\WINDOWS\system32
+        Run C:/Program Files/Git/git-bash.exe, C:/Program Files/Git
         return
     }
