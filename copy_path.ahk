@@ -59,6 +59,7 @@
     return
 
 GetSelectedFilePath(FileName)
+; ファイルの情報（文字列）を加工して、絶対パスを求める
 {
     FileName := RegExReplace(FileName, "\t.*$") ; tab文字以降の文字をカット
 
