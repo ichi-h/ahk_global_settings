@@ -11,6 +11,8 @@
 */
 
 #AppsKey::
+    sleep 250
+    
     If WinActive("ahk_class CabinetWClass")
     ; エクスプローラーがアクティブな時
     {
