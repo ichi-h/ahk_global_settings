@@ -1,17 +1,16 @@
 ﻿/*
+    # terminal.ahk
     Win+CapsLockでGit Bashの起動
 
-    注意:
+    ## 注意
     レジストリでCapsLockをAppsKeyに変更しています。
 
-    参考:
+    ## 参考:
     1. AutohotkeyとWindows 10：現在のエクスプローラパスを取得する方法
         - https://stackoverrun.com/ja/q/10815089
 */
 
 #AppsKey::
-    Send, {Blind}
-
     If WinActive("ahk_class CabinetWClass")
     ; エクスプローラーがアクティブな時
     {

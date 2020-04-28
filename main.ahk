@@ -1,4 +1,5 @@
 ﻿/*
+    # main.ahk
     設定した.ahkをIncludeし、実行
 */
 

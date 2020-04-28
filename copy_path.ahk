@@ -1,12 +1,13 @@
 ﻿/*
+    # copy.path.ahk
     Ctrl+Shift+Cで、現在のフォルダーや選択したファイルのパスをコピーする
-    エクスプローラー、デスクトップ限定
+    （エクスプローラー、デスクトップ限定）
 
-    参考:
-    1. AutohotkeyとWindows 10：現在のエクスプローラパスを取得する方法
+    ## 参考
+    - AutohotkeyとWindows 10：現在のエクスプローラパスを取得する方法
         - https://stackoverrun.com/ja/q/10815089
     
-    2. (AHK)(AutoHotkey)(現在選択中のデスクトップアイコンを特定する 編) - もらかなです。
+    - (AHK)(AutoHotkey)(現在選択中のデスクトップアイコンを特定する 編) - もらかなです。
         - https://morakana.hatenadiary.org/entry/20090531/1243792116
 */
 
