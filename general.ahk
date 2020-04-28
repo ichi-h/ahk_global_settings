@@ -1,9 +1,12 @@
 ﻿/*
     基本的な動作のショートカット設定
+
+    注意:
+    レジストリでCapsLockをAppsKeyに変更しています。
 */
 
 ; キー無効化
-AppsKey::Return ; レジストリでCapsLockをAppsKeyに変更している。CapsLock単体の使用を無効にする
+AppsKey::Return ; CapsLock単体の使用を無効にする
 
 ; ウィンドウを閉じる
 !q::
