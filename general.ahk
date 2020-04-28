@@ -9,6 +9,9 @@
 ; キー無効化
 AppsKey::Return ; CapsLock単体の使用を無効にする
 
+; Ctrl + CapsLock -> Ctrl + Shift + Tab
+^AppsKey::Send, ^+{Tab}
+
 ; ウィンドウを閉じる
 !q::
     Send, {Blind}
