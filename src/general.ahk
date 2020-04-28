@@ -22,5 +22,5 @@ AppsKey::Return ; CapsLock単体の使用を無効にする
     return
 
 ; 仮想デスクトップの切り替え
-sc07B::Send,#^{Left}   ; 変換 -> Ctrl + Win + Left
-sc079::Send,#^{Right}  ; 無変換 -> Ctrl + Win + Right
+sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
++sc079::Send,#^{Left}   ; Shift+変換 -> Ctrl + Win + Left
