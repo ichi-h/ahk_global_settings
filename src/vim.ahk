@@ -18,6 +18,16 @@ sc07B & l::Send, {Blind}{right}
 sc07B & w::Send, {Blind}^{right}
 sc07B & b::Send, {Blind}^{left}
 
+; Home, End
+sc07B & a::
+    If GetKeyState("Shift", "P")
+        Send, {End}
+    Return
+sc07B & i::
+    If GetKeyState("Shift", "P")
+        Send, {Home}
+    Return
+
 ; 上または下に改行して、そこにカーソル移動
 sc07B & o::
     If GetKeyState("Shift", "P")
