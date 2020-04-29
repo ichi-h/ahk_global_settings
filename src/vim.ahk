@@ -27,3 +27,19 @@ sc07B & x::
     Else
         Send, {Blind}{Delete}
     Return
+
+; 上または下に改行して、そこにカーソル移動
+sc07B & o::
+    If GetKeyState("Shift", "P")
+    {
+        Send, {Home}
+        Send, {Enter}
+        Send, {up}
+    }
+    Else
+    {
+        Send, {NumpadEnd}
+        Send, {Enter}
+    }
+    Return
+    
