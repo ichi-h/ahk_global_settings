@@ -28,6 +28,16 @@ sc07B & x::
         Send, {Blind}{Delete}
     Return
 
+; 行削除
+sc07B & d::
+    Keywait, d, U
+    Keywait, d, D T0.5
+    If ErrorLevel=0
+        Send, {Blind}{End}+{Home 2}{del 2}
+        Sleep, 50
+        Send, {End}
+    Return
+
 ; 上または下に改行して、そこにカーソル移動
 sc07B & o::
     If GetKeyState("Shift", "P")
