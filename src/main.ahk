@@ -17,3 +17,4 @@ SetTitleMatchMode,2
 #Include apps.ahk
 #Include copy_path.ahk
 #Include terminal.ahk
+#Include vim.ahk
