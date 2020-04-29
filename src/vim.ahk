@@ -34,7 +34,7 @@ sc07B & d::
     Keywait, d, D T0.5
     If ErrorLevel=0
         Send, {Blind}{End}+{Home 2}{del 2}
-        Sleep, 50
+        Sleep, 100
         Send, {End}
     Return
 
