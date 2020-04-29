@@ -47,8 +47,7 @@ sc07B & o::
 /*
     基本的なコマンド
 */
-; Undo, Redo
-sc07B & u::Send, {blind}^z
+; Redo (Undoは複合コマンドへ)
 sc07B & r::
     If GetKeyState(LCtrl, "P")
         Send, {blind}^+z
@@ -70,15 +69,6 @@ sc07B & x::
         Send, {Blind}{Delete}
     Return
 
-; 行削除
-sc07B & d::
-    Keywait, d, U
-    Keywait, d, D T0.5
-    If ErrorLevel=0
-        Send, {Blind}{End}+{Home 2}{del 2}
-        Sleep, 100
-        Send, {End}
-    Return
 
 
 /*
@@ -89,3 +79,40 @@ sc07B & v::
     If GetKeyState("Shift", "P")
         Send, {Home}+{End}
     Return
+
+
+/*
+    複合コマンド
+*/
+; 行削除, PgDn
+sc07B & d::
+    If GetKeyState("LControl", "P")
+    {
+        Send, {PgDn}
+        Return
+    }
+    Else
+    {
+        Keywait, d, U
+        Keywait, d, D T0.5
+        If ErrorLevel=0
+        {
+            Send, {End}+{Home 2}{del 2}
+            Sleep, 100
+            Send, {End}
+        }
+        Return
+    }
+
+; PgUp, Undo
+sc07B & u::
+    If GetKeyState("LControl", "P")
+    {
+        Send, {PgUp}
+        Return
+    }
+    Else
+    {
+        Send, {Blind}^z
+        Return
+    }
