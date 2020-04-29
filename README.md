@@ -20,11 +20,11 @@ AutoHotkeyでWindowsのショートカット周りを整える
 なんで、**AutoHotkey** を使って、楽にWindowsのショートカット周りを整えようぜっていうお話です
 
 ## 今回のセッティング
-前提として、私の環境では諸般の事情で **CapsLockキー** を **AppsKey** （右クリックをキーボードでするやつ）に変更しています  
-ソースコードに **AppsKey** と書いてあるやつは、キーの配置的には **CapsLock** を指しているのでご注意ください  
+前提として、私の環境では諸事情で **CapsLockキー** を **AppsKey** （右クリックをキーボードでするやつ）に変更しています  
+ソースコードに **AppsKey** と書いてあるやつは、キーの配置的に **CapsLock** を指しているのでご注意ください  
 
 ### main.ahk
-下４つの.ahkを `Include` し、まとめて実行します  
+下５つの.ahkを `Include` し、まとめて実行します  
 ショートカットを作って、スタートアップに登録しておくと便利  
 
 ### general.ahk
@@ -38,6 +38,7 @@ AutoHotkeyでWindowsのショートカット周りを整える
 
 ### terminal.ahk
 **CapsLock + C** でGit Bushを起動します  
+Git Bushを使う理由は、UNIX系コマンドを使用したいから  
 
 ### vim.ahk
 vim風のコマンドを追加します
