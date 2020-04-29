@@ -6,6 +6,8 @@
     レジストリでCapsLockをAppsKeyに変更しています
 */
 
+; -------------------------------------------------- ;
+
 ; キー無効化
 AppsKey::Return ; CapsLock単体の使用を無効にする
 
@@ -18,12 +20,12 @@ AppsKey::Return ; CapsLock単体の使用を無効にする
     Send, ^+{Tab}
     return
 
+; 仮想デスクトップの切り替え
+sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
++sc079::Send,#^{Left}   ; Shift+変換 -> Ctrl + Win + Left
+
 ; ウィンドウを閉じる
 !q::
     Send, {Blind}
     Send, !{F4} ; Alt+Q -> Alt + F4
     return
-
-; 仮想デスクトップの切り替え
-sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
-+sc079::Send,#^{Left}   ; Shift+変換 -> Ctrl + Win + Left

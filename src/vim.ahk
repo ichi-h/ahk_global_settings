@@ -44,6 +44,7 @@ sc07B & o::
     Return
 
 
+
 /*
     基本的なコマンド
 */
@@ -58,10 +59,11 @@ sc07B & y::Send, ^{c}
 sc07B & p::Send, ^{v}
 
 
+
 /*
     削除系コマンド
 */
-; 文字削除
+; 一文字削除
 sc07B & x::
     If GetKeyState("Shift", "P")
         Send, {Blind}{BackSpace}
@@ -81,8 +83,10 @@ sc07B & v::
     Return
 
 
+
 /*
     複合コマンド
+    (一つのキーに複数のコマンドが当てられている)
 */
 ; 行削除, PgDn
 sc07B & d::
