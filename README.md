@@ -39,5 +39,8 @@ AutoHotkeyでWindowsのショートカット周りを整える
 ### terminal.ahk
 **CapsLock + C** でGit Bushを起動します  
 
+### vim.ahk
+vim風のコマンドを追加
+
 ## 今後の予定
 Vimのコマンドを色んな所で使いてぇなーと思っているので、その辺を拡張していきたい
