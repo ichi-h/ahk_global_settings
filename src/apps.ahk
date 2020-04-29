@@ -9,5 +9,5 @@ AppsKey & e::
     Send, {Blind}
     return
 
-; 電卓
-AppsKey & d::Run C:/Windows/System32/calc.exe
+; 電卓（Python）
+AppsKey & d::Run "C:/Users/himaz/AppData/Local/Programs/Python/Python36/python.exe"
