@@ -10,6 +10,7 @@
 
 ; キー無効化
 AppsKey::Return ; CapsLock単体の使用を無効にする
+AppsKey up::Return
 
 ; Alt + CapsLock -> Shift + Alt + Tab
 <!AppsKey::ShiftAltTab
