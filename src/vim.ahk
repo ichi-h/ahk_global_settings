@@ -61,7 +61,7 @@ sc07B & p::Send, ^{v}
 
 
 /*
-    削除系コマンド
+    削除コマンド
 */
 ; 一文字削除
 sc07B & x::
@@ -74,7 +74,7 @@ sc07B & x::
 
 
 /*
-    選択系コマンド
+    選択コマンド
 */
 ; 一行選択
 sc07B & v::
@@ -88,7 +88,7 @@ sc07B & v::
     複合コマンド
     (一つのキーに複数のコマンドが当てられている)
 */
-; 行削除, PgDn
+; 行削除, 単語削除, PgDn
 sc07B & d::
     If GetKeyState("AppsKey", "P")
     {
@@ -98,12 +98,19 @@ sc07B & d::
     Else
     {
         Keywait, d, U
-        Keywait, d, D T0.5
-        If ErrorLevel=0
+        ; Keywait, d, D T0.5
+        Input, key, L1 T0.5
+        If key=d
         {
             Send, {End}+{Home 2}{del 2}
             Sleep, 100
             Send, {End}
+        }
+        If key=w
+        {
+            Send, ^{Right}^+{Left}
+            Sleep, 50
+            Send, {BS}
         }
         Return
     }
@@ -111,16 +118,12 @@ sc07B & d::
 ; PgUp, Undo
 sc07B & u::
     If GetKeyState("AppsKey", "P")
+    {
         Send, {PgUp}
-    Return
-    
-    ; If GetKeyState("AppsKey", "P")
-    ; {
-    ;     Send, {PgUp}
-    ;     Return
-    ; }
-    ; Else
-    ; {
-    ;     Send, ^z
-    ;     Return
-    ; }
+        Return
+    }
+    Else
+    {
+        Send, ^z
+        Return
+    }
