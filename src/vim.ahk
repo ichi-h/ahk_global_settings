@@ -49,10 +49,10 @@ sc07B & o::
     基本的なコマンド
 */
 ; Redo (Undoは複合コマンドへ)
-sc07B & r::
-    If GetKeyState(LCtrl, "P")
-        Send, {blind}^+z
-    Return
+; sc07B & r::
+;     If GetKeyState(LCtrl, "P")
+;         Send, {blind}^+z
+;     Return
 
 ; Yank, Put
 sc07B & y::Send, ^{c}
@@ -90,7 +90,7 @@ sc07B & v::
 */
 ; 行削除, PgDn
 sc07B & d::
-    If GetKeyState("LControl", "P")
+    If GetKeyState("AppsKey", "P")
     {
         Send, {PgDn}
         Return
@@ -110,13 +110,17 @@ sc07B & d::
 
 ; PgUp, Undo
 sc07B & u::
-    If GetKeyState("LControl", "P")
-    {
+    If GetKeyState("AppsKey", "P")
         Send, {PgUp}
-        Return
-    }
-    Else
-    {
-        Send, ^z
-        Return
-    }
+    Return
+    
+    ; If GetKeyState("AppsKey", "P")
+    ; {
+    ;     Send, {PgUp}
+    ;     Return
+    ; }
+    ; Else
+    ; {
+    ;     Send, ^z
+    ;     Return
+    ; }
