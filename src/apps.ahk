@@ -12,4 +12,4 @@ AppsKey & e::
     return
 
 ; 電卓（Python）
-AppsKey & d::Run "C:/Users/himaz/AppData/Local/Programs/Python/Python36/python.exe"
+AppsKey & p::Run "C:/Users/himaz/AppData/Local/Programs/Python/Python36/python.exe"

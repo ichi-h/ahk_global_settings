@@ -33,7 +33,7 @@
         window := ""
 
         StringReplace, fullpath, fullpath, \, /, All
-        clipboard := """" . fullpath . """" ; clipboardにパスをコピー
+        clipboard := fullpath ; clipboardにパスをコピー
     }
     
     If WinActive("ahk_class Progman")
@@ -46,7 +46,7 @@
 
         fullpath := GetSelectedFilePath(FileName)
         
-        clipboard := """" . fullpath . """" ; clipboardにパスをコピー
+        clipboard := fullpath ; clipboardにパスをコピー
     }
 
     If WinActive("ahk_class WorkerW")
@@ -55,7 +55,7 @@
 
         fullpath := GetSelectedFilePath(FileName)
         
-        clipboard := """" . fullpath . """" ; clipboardにパスをコピー
+        clipboard := fullpath ; clipboardにパスをコピー
     }
 
     return
