@@ -117,6 +117,6 @@ sc07B & u::
     }
     Else
     {
-        Send, {Blind}^z
+        Send, ^z
         Return
     }
