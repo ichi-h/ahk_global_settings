@@ -1,5 +1,15 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+/*
+    # main.rs
+    括弧内の文字を消す
+
+    ## ライセンス
+    Copyright (c) 2020 Ippee
+    本アプリは GNU General Public License v2.0 の基で公開されています
+    GitHub: https://github.com/ippee/AutoHotkeySettings/blob/master/LICENSE
+*/
+
 extern crate clipboard_win;
 use clipboard_win::Clipboard;
 

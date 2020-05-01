@@ -3,6 +3,11 @@
     Ctrl+Shift+Cで、現在のフォルダーや選択したファイルのパスをコピーする
     （エクスプローラー、デスクトップ限定）
 
+    ## ライセンス
+    Copyright (c) 2020 Ippee
+    本アプリは GNU General Public License v2.0 の基で公開されています
+    GitHub: https://github.com/ippee/AutoHotkeySettings/blob/master/LICENSE
+
     ## 参考
     - AutohotkeyとWindows 10：現在のエクスプローラパスを取得する方法
         - https://stackoverrun.com/ja/q/10815089
