@@ -128,10 +128,13 @@ sc07B & d::
             Send, {End}+{Home}
             Send, ^{c}
             Sleep, 30
+            before_str_len := StrLen(before_left_clip)
 
             RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "%Clipboard%" "%key%" "%before_left_clip%"
             
             Send, ^{v}
+            Send, {Home}
+            Send, {Right %before_str_len%}
         }
         Return
     }
