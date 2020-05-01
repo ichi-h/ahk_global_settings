@@ -98,19 +98,40 @@ sc07B & d::
     Else
     {
         Keywait, d, U
-        ; Keywait, d, D T0.5
         Input, key, L1 T0.5
+
         If key=d
         {
             Send, {End}+{Home 2}{del 2}
             Sleep, 100
             Send, {End}
         }
+
         If key=w
         {
             Send, ^{Right}^+{Left}
             Sleep, 50
             Send, {BS}
+        }
+
+        If key=i
+        {
+            Keywait, i, U
+            Input, key, L1 T1
+            key := Asc(key)
+
+            Send, +{Home}
+            Send, ^{c}
+            Sleep, 30
+            before_left_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "a")
+
+            Send, {End}+{Home}
+            Send, ^{c}
+            Sleep, 30
+
+            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "%Clipboard%" "%key%" "%before_left_clip%"
+            
+            Send, ^{v}
         }
         Return
     }
