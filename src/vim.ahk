@@ -18,11 +18,29 @@ sc07B & l::Send, {Blind}{right}
 sc07B & w::Send, {Blind}^{right}
 sc07B & b::Send, {Blind}^{left}
 
+; ページの先頭・最後へ
+sc07B & g::
+    If GetKeyState("Shift", "P")
+    {
+        Send, ^{End}
+        Return
+    }
+    
+    Keywait, g, U
+    Keywait, g, D T0.5
+
+    If ErrorLevel=0
+    {
+        Send, ^{Home}
+        Return
+    }
+
 ; Home, End
 sc07B & a::
     If GetKeyState("Shift", "P")
         Send, {End}
     Return
+
 sc07B & i::
     If GetKeyState("Shift", "P")
         Send, {Home}
@@ -76,10 +94,9 @@ sc07B & x::
 /*
     選択コマンド
 */
-; 一行選択
 sc07B & v::
     If GetKeyState("Shift", "P")
-        Send, {Home}+{End}
+        Send, {Home}+{End} ; 一行選択
     Return
 
 
