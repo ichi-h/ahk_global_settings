@@ -96,7 +96,28 @@ sc07B & x::
 */
 sc07B & v::
     If GetKeyState("Shift", "P")
-        Send, {Home}+{End} ; 一行選択
+    ; 一行選択
+    {
+        Send, {Home}+{End}
+        Return
+    }
+    
+    Keywait, v, U
+    Input, key, L1 T0.5
+
+    If key=i
+    {
+        Keywait, i, U
+        Input, key, L1 T0.5
+
+        If key=w
+        ; 単語選択
+        {
+            Send, ^{Left}
+            Send, ^+{Right}
+        }
+        Return
+    }
     Return
 
 
@@ -105,19 +126,21 @@ sc07B & v::
     複合コマンド
     (一つのキーに複数のコマンドが当てられている)
 */
-; 行削除, 単語削除, PgDn
 sc07B & d::
     If GetKeyState("AppsKey", "P")
+    ; PgDn
     {
         Send, {PgDn}
         Return
     }
+
     Else
     {
         Keywait, d, U
         Input, key, L1 T0.5
 
         If key=d
+        ; 行削除
         {
             Send, {End}+{Home 2}{del 2}
             Sleep, 100
@@ -125,6 +148,7 @@ sc07B & d::
         }
 
         If key=w
+        ; 単語削除
         {
             Send, ^{Right}^+{Left}
             Sleep, 50
@@ -132,6 +156,7 @@ sc07B & d::
         }
 
         If key=i
+        ; 括弧の中身を消す
         {
             Keywait, i, U
             Input, key, L1 T1
@@ -156,14 +181,15 @@ sc07B & d::
         Return
     }
 
-; PgUp, Undo
 sc07B & u::
     If GetKeyState("AppsKey", "P")
+    ; PgUp
     {
         Send, {PgUp}
         Return
     }
     Else
+    ; Undo
     {
         Send, ^z
         Return
