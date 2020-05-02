@@ -167,21 +167,25 @@ sc07B & d::
             Input, key, L1 T1
             key := Asc(key)
 
-            Send, +{Home}
+            Send, +{Home} ; 左側を選択
             Send, ^{c}
             Sleep, 30
-            before_left_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "", ReplacementCount)
-            before_str_len := StrLen(before_left_clip) + %ReplacementCount%
-
-            Send, {End}+{Home}
-            Send, ^{c}
-            Sleep, 30
-
-            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "%key%" "%before_str_len%"
-            
+            Send, {BS}
+            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--left" "%key%"
             Send, ^{v}
-            Send, {Home}
-            Send, {Right %before_str_len%}
+
+            Send, +{End} ; 右側を選択
+            Send, ^{c}
+            Sleep, 30
+            Send, {BS}
+            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--right" "%key%"
+            Send, ^{v}
+
+            Send, {ShiftUp}
+
+            right_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "", ReplacementCount)
+            str_len := StrLen(right_clip) + %ReplacementCount%
+            Send, {Left %str_len%}
         }
         Return
     }

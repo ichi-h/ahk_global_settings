@@ -18,33 +18,46 @@ use std::env;
 fn main() {
     let args: Vec<String> = env::args().collect();
     
-    let input_key = &args[1].to_string(); // diXの "X" を取得
-    let cursor_pos = args[2].parse::<usize>().unwrap(); // カーソル位置を取得
+    let opt = &*args[1]; // 左右どちらかを選択するオプションの取得
+    let input_key = &args[2]; // diXの "X" を取得
 
     // println!("{:?}", args);
     // std::thread::sleep(std::time::Duration::from_secs(5));
 
-    // let cursor_pos = before_left_clip.chars().count() as usize;
-
     let mut clipboard = String::new();
-    Clipboard::new().unwrap().get_string(&mut clipboard).unwrap(); // クリップボードを取得
+    {
+        let clip_scope = &mut clipboard; // 借用
+        Clipboard::new().unwrap().get_string(clip_scope).unwrap(); // クリップボードを取得
+    }
+
+    let mut target: usize = 0;
+    match opt {
+        "--left" => {
+            clipboard = clipboard.chars().rev().collect::<String>(); // 左端のターゲットを検索しやすいよう文字列を逆順にする
+            target = 0;
+        },
+        "--right" => {
+            target = 1;
+        },
+        _ => {},
+    };
+
+    let mut clip_len: usize = 0;
+    {
+        let clip_scope = &mut clipboard; // 借用
+        let clip_len_scope = &mut clip_len; // 借用
+
+        *clip_len_scope = clip_scope.chars().count() as usize; // クリップボードの長さを取得
+    }
 
     let both_ends = get_both_ends(input_key.to_string()); // input_keyから両端のターゲットを取得
 
-    // クリップボードをカーソル位置を基準として左右に分割する
-    let mut left_clip = clipboard.chars().take(cursor_pos).collect::<String>();
-    left_clip = left_clip.chars().rev().collect::<String>(); // 左端のターゲットを検索しやすいよう文字列を逆順にする
-    let mut right_clip = clipboard.chars().skip(cursor_pos).take(clipboard.chars().count()).collect::<String>();
-
-    let right_clip_len = right_clip.chars().count() as usize; // 右側のクリップボードの長さを取得
-
     // ターゲット内部の文字列を削除する
-    left_clip = trim_strings(left_clip, cursor_pos, &both_ends[0]);
-    right_clip = trim_strings(right_clip, right_clip_len, &both_ends[1]);
+    clipboard = trim_strings(clipboard, clip_len, &both_ends[target]);
 
-    left_clip = left_clip.chars().rev().collect::<String>(); // 逆順を元に戻す
-
-    let clipboard = left_clip + &*right_clip; // 左右のクリップボードをくっつける
+    if opt == "--left" {
+        clipboard = clipboard.chars().rev().collect::<String>(); // 逆順を元に戻す
+    }
 
     Clipboard::new().unwrap().set_string(&*clipboard); // クリップボードに保存
 }
