@@ -170,14 +170,14 @@ sc07B & d::
             Send, +{Home}
             Send, ^{c}
             Sleep, 30
-            before_left_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "a")
+            before_left_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "", ReplacementCount)
+            before_str_len := StrLen(before_left_clip) + %ReplacementCount%
 
             Send, {End}+{Home}
             Send, ^{c}
             Sleep, 30
-            before_str_len := StrLen(before_left_clip)
 
-            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "%Clipboard%" "%key%" "%before_left_clip%"
+            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "%key%" "%before_str_len%"
             
             Send, ^{v}
             Send, {Home}

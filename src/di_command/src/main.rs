@@ -18,34 +18,40 @@ use std::env;
 fn main() {
     let args: Vec<String> = env::args().collect();
     
-    let clipboard = &args[1];
-    let input_key = &args[2].to_string();
-    let before_left_clip = &args[3];
+    let input_key = &args[1].to_string(); // diXの "X" を取得
+    let cursor_pos = args[2].parse::<usize>().unwrap(); // カーソル位置を取得
 
-    println!("{:?}", args);
+    // println!("{:?}", args);
     // std::thread::sleep(std::time::Duration::from_secs(5));
 
-    let cursor_pos = before_left_clip.chars().count() as usize;
+    // let cursor_pos = before_left_clip.chars().count() as usize;
 
-    let both_ends = get_both_ends(input_key.to_string());
+    let mut clipboard = String::new();
+    Clipboard::new().unwrap().get_string(&mut clipboard).unwrap(); // クリップボードを取得
 
+    let both_ends = get_both_ends(input_key.to_string()); // input_keyから両端のターゲットを取得
+
+    // クリップボードをカーソル位置を基準として左右に分割する
     let mut left_clip = clipboard.chars().take(cursor_pos).collect::<String>();
-    left_clip = left_clip.chars().rev().collect::<String>();
+    left_clip = left_clip.chars().rev().collect::<String>(); // 左端のターゲットを検索しやすいよう文字列を逆順にする
     let mut right_clip = clipboard.chars().skip(cursor_pos).take(clipboard.chars().count()).collect::<String>();
 
-    let right_clip_len = right_clip.chars().count() as usize;
+    let right_clip_len = right_clip.chars().count() as usize; // 右側のクリップボードの長さを取得
 
+    // ターゲット内部の文字列を削除する
     left_clip = trim_strings(left_clip, cursor_pos, &both_ends[0]);
     right_clip = trim_strings(right_clip, right_clip_len, &both_ends[1]);
 
-    left_clip = left_clip.chars().rev().collect::<String>();
+    left_clip = left_clip.chars().rev().collect::<String>(); // 逆順を元に戻す
 
-    let clipboard = left_clip + &*right_clip;
+    let clipboard = left_clip + &*right_clip; // 左右のクリップボードをくっつける
 
-    Clipboard::new().unwrap().set_string(&*clipboard);
+    Clipboard::new().unwrap().set_string(&*clipboard); // クリップボードに保存
 }
 
 fn get_both_ends(input_key: String) -> [String; 2] {
+    // 両端のターゲットを取得する
+
     let list = match &*input_key {
         "34" => ["\"".to_string(), "\"".to_string()],
         "39" => ["'".to_string(), "'".to_string()],
@@ -61,6 +67,7 @@ fn get_both_ends(input_key: String) -> [String; 2] {
 }
 
 fn trim_strings(clipboard: String, end: usize, target: &String) -> String {
+    // 片端のターゲットを取得し、そこより手前の文字列を削除する
     let mut res: String = "".to_string();
 
     for i in 0..end {
