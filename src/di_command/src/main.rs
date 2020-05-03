@@ -62,29 +62,34 @@ fn main() {
     Clipboard::new().unwrap().set_string(&*clipboard); // クリップボードに保存
 }
 
-fn get_both_ends(input_key: String) -> [String; 2] {
+fn get_both_ends(input_key: String) -> [[String; 3]; 2] {
     // 両端のターゲットを取得する
 
     let list = match &*input_key {
-        "34" => ["\"".to_string(), "\"".to_string()],
-        "39" => ["'".to_string(), "'".to_string()],
-        "41" => ['('.to_string(), ')'.to_string()],
-        "62" => ["<".to_string(), ">".to_string()],
-        "93" => ['['.to_string(), ']'.to_string()],
-        "116" => ['>'.to_string(), '<'.to_string()],
-        "125" => ['{'.to_string(), '}'.to_string()],
-        _ => ["".to_string(), "".to_string()],
+        "34" => [["\"".to_string(), "".to_string(), "".to_string()], ["\"".to_string(), "".to_string(), "".to_string()]],
+        "39" => [["'".to_string(), "".to_string(), "".to_string()], ["'".to_string(), "".to_string(), "".to_string()]],
+        "41" => [['('.to_string(), "（".to_string(), "".to_string()], [')'.to_string(), "）".to_string(), "".to_string()]],
+        "62" => [["<".to_string(), "".to_string(), "".to_string()], [">".to_string(), "".to_string(), "".to_string()]],
+        "93" => [['['.to_string(), "「".to_string(), "『".to_string()], [']'.to_string(), "」".to_string(), "』".to_string()]],
+        "116" => [['>'.to_string(), "".to_string(), "".to_string()], ['<'.to_string(), "".to_string(), "".to_string()]],
+        "125" => [['{'.to_string(), "".to_string(), "".to_string()], ['}'.to_string(), "".to_string(), "".to_string()]],
+        _ => [["".to_string(), "".to_string(), "".to_string()], ["".to_string(), "".to_string(), "".to_string()]],
     };
 
     list
 }
 
-fn trim_strings(clipboard: String, end: usize, target: &String) -> String {
+fn trim_strings(clipboard: String, end: usize, target: &[String; 3]) -> String {
     // 片端のターゲットを取得し、そこより手前の文字列を削除する
     let mut res: String = "".to_string();
 
+    let target_0 = &target[0];
+    let target_1 = &target[1];
+    let target_2 = &target[2];
+
     for i in 0..end {
-        if clipboard.chars().skip(i).take(1).collect::<String>() == *target {
+        let ch = clipboard.chars().skip(i).take(1).collect::<String>();
+        if ch == *target_0 || ch == *target_1 || ch == *target_2 {
             res = clipboard.chars().skip(i).take(clipboard.chars().count()).collect::<String>();
             break
         }
