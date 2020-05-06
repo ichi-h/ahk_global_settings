@@ -20,6 +20,8 @@ SetTitleMatchMode,2
 #InstallKeybdHook
 #UseHook
 
+#Include %A_ScriptDir%
+
 #Include general.ahk
 #Include apps.ahk
 #Include copy_path.ahk

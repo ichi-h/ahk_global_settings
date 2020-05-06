@@ -86,6 +86,44 @@ sc07B & y::Send, ^{c}
 sc07B & p::Send, ^{v}
 
 
+/*
+    コマンドラインモード
+*/
+sc07B & sc028::
+    Keywait, sc028, U
+    Input, key,, {Enter}{Esc}
+    
+    If ErrorLevel=Esc
+        Return
+    
+    If key=w
+    ; :w => 保存（書き込み）
+        Send, ^{s}
+    
+    Else If key=q
+    ; :q => 閉じる
+        Send, ^{w}
+    
+    Else If key=wq
+    ; :wq => 保存して閉じる
+    {
+        Send, ^{s}
+        Sleep, 100
+        Send, ^{w}
+    }
+
+    Else If key=q!
+    ; :q! => 強制終了（vscode準拠）
+    {
+        Send, ^{w}
+        Sleep, 500
+        Send, {Right}
+        Send, {Enter}
+    }
+
+    Return
+
+
 
 /*
     削除コマンド
