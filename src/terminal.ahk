@@ -32,7 +32,7 @@ AppsKey & c::
         }
         window := ""
         
-        Run C:/Program Files/Git/git-bash.exe, %fullpath% ; 選択中のファイルのディレクトリでbashを起動
+        Run wt.exe -d "%fullpath%" ; 選択中のファイルのディレクトリでbashを起動
 
         return
     }
@@ -40,13 +40,13 @@ AppsKey & c::
     Else If WinActive("ahk_class Progman") or WinActive("ahk_class WorkerW")
     ; デスクトップがアクティブな時
     {
-        Run C:/Program Files/Git/git-bash.exe, %A_Desktop%
+        Run wt.exe -d "%A_Desktop%"
         return
     }
 
     Else
     ; それ以外の時
     {
-        Run C:/Program Files/Git/git-bash.exe, C:/Program Files/Git
+        Run wt.exe -d "C:/Program Files/Git"
         return
     }
