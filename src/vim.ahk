@@ -211,6 +211,8 @@ sc07B & d::
             ; diX => Xで包まれた括弧の中身を消す
             key := Asc(key)
 
+            clip_escape := Clipboard ; クリップボードを避難
+
             Send, +{Home} ; 左側を選択
             Send, ^{c}
             Sleep, 30
@@ -230,6 +232,9 @@ sc07B & d::
             right_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "", ReplacementCount)
             str_len := StrLen(right_clip) + %ReplacementCount%
             Send, {Left %str_len%}
+
+            Sleep, 30
+            Clipboard := clip_escape ; クリップボードを復活
         }
         Return
     }
