@@ -47,6 +47,6 @@ AppsKey & c::
     Else
     ; それ以外の時
     {
-        Run wt.exe -d "C:/Program Files/Git"
+        Run wt.exe
         return
     }
