@@ -16,9 +16,6 @@ AppsKey & e::
     Send, {Blind}
     return
 
-; 電卓（Python）
-AppsKey & p::Run Python
-
 ; コマンドのメモを表示
 ; デスクトップにメモを配置しており、コマンドを忘れた時に起動する
 AppsKey & F1::Run "%A_Desktop%/Command.txt"
