@@ -19,8 +19,13 @@
 ; -------------------------------------------------- ;
 
 ^+c::
-    Send, {Blind}
-    
+    Keywait, c, U
+    Input, key, L1 T0.3
+
+    bool = False
+    If key=c    ; cを二回押しでlinux (WSL)のパスに変換
+        bool = True
+
     If WinActive("ahk_class CabinetWClass")
     {
         for window in ComObjCreate("Shell.Application").Windows
@@ -38,7 +43,7 @@
         window := ""
 
         StringReplace, fullpath, fullpath, \, /, All
-        clipboard := fullpath ; clipboardにパスをコピー
+        clipboard := fullpath
     }
     
     If WinActive("ahk_class Progman")
@@ -51,7 +56,7 @@
 
         fullpath := GetSelectedFilePath(FileName)
         
-        clipboard := fullpath ; clipboardにパスをコピー
+        clipboard := fullpath
     }
 
     If WinActive("ahk_class WorkerW")
@@ -60,8 +65,11 @@
 
         fullpath := GetSelectedFilePath(FileName)
         
-        clipboard := fullpath ; clipboardにパスをコピー
+        clipboard := fullpath
     }
+
+    If bool=True
+        StringReplace, clipboard, clipboard, C:/Users/himaz, /mnt/c/Users/himaz, All ; ホームディレクトリをlinux向けに変換
 
     return
 
