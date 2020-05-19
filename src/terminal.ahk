@@ -18,7 +18,7 @@
 ; -------------------------------------------------- ;
 
 AppsKey & c::
-    sleep 250
+    sleep 50
 
     If WinActive("ahk_class CabinetWClass")
     ; エクスプローラーがアクティブな時
@@ -32,7 +32,7 @@ AppsKey & c::
         }
         window := ""
         
-        Run wt.exe -d "%fullpath%" ; 選択中のファイルのディレクトリでbashを起動
+        Run wt.exe -d "%fullpath%" ; 選択中のファイルのディレクトリでwtを起動
 
         return
     }
