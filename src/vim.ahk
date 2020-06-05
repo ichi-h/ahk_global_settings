@@ -59,8 +59,9 @@ sc07B & i::
 sc07B & o::
     If GetKeyState("Shift", "P")
     {
-        Send, {Home}
+        Send, {NumpadHome}
         Send, {Enter}
+        Sleep, 30
         Send, {up}
     }
     Else
