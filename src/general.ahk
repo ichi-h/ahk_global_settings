@@ -13,8 +13,8 @@
 
 ; -------------------------------------------------- ;
 
-; キー無効化
-AppsKey::Return ; CapsLock単体の使用を無効にする
+; 左手エンター
+AppsKey::Enter ; CapsLock単体 -> Enter
 AppsKey up::Return
 
 ; Alt + CapsLock -> Shift + Alt + Tab
@@ -37,7 +37,7 @@ sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
     return
 
 ; Enterキーを増やす
-sc07B & e::
-    Send, {Blind}
-    Send, {Enter}
-    return
+; sc07B & e::
+;     Send, {Blind}
+;     Send, {Enter}
+;     return
