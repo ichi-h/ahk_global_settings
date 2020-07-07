@@ -15,7 +15,10 @@
 
 ; 左手エンター & BS
 AppsKey::Enter ; CapsLock単体 -> Enter
-+AppsKey::BS ; Shift + CapsLock -> BackSpace
++AppsKey::
+    Send, {Blind}
+    Send, {BS} ; Shift + CapsLock -> BackSpace
+    return
 AppsKey up::Return
 
 ; Alt + CapsLock -> Shift + Alt + Tab
