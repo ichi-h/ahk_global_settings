@@ -20,7 +20,7 @@
 
 ^+c::
     Keywait, c, U
-    Input, key, L1 T0.3
+    Input, key, L2 T0.3
 
     bool = False
     If key=c    ; cを二回押しでlinux (WSL)のパスに変換
@@ -69,7 +69,15 @@
     }
 
     If bool=True
-        StringReplace, clipboard, clipboard, C:/Users/himaz, /mnt/c/Users/himaz, All ; ホームディレクトリをlinux向けに変換
+    {
+        windir := "C:/Users/"
+        linuxdir := "/mnt/c/Users/"
+
+        windir := windir . A_UserName
+        linuxdir := linuxdir . A_UserName
+
+        StringReplace, clipboard, clipboard, %windir%, %linuxdir%, All ; ホームディレクトリをlinux向けに変換
+    }
 
     return
 
