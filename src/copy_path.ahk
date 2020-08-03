@@ -44,7 +44,6 @@
         }
         window := ""
 
-        StringReplace, fullpath, fullpath, \, /, All
         clipboard := fullpath
     }
     
@@ -58,7 +57,6 @@
 
         fullpath := GetSelectedFilePath(FileName)
         
-        StringReplace, fullpath, fullpath, \, /, All
         clipboard := fullpath
     }
 
@@ -67,7 +65,6 @@
         ControlGet, FileName, List, Selected, SysListView321, ahk_class WorkerW ; 選択中のファイルの情報をゲット
 
         fullpath := GetSelectedFilePath(FileName)
-        
         
         clipboard := fullpath
     }
@@ -81,13 +78,13 @@
     {
         StringReplace, clipboard, clipboard, \, /, All
 
-        windir := "C:/Users/"
-        linuxdir := "/mnt/c/Users/"
+        win_homedir := "C:/Users/"
+        linux_homedir := "/mnt/c/Users/"
 
-        windir := windir . A_UserName
-        linuxdir := linuxdir . A_UserName
+        win_homedir := win_homedir . A_UserName
+        linux_homedir := linux_homedir . A_UserName
 
-        StringReplace, clipboard, clipboard, %windir%, %linuxdir%, All ; ホームディレクトリをlinux向けに変換
+        StringReplace, clipboard, clipboard, %win_homedir%, %linux_homedir%, All ; ホームディレクトリをlinux向けに変換
     }
 
     If selecter=win_back
