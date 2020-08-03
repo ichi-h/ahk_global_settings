@@ -22,9 +22,9 @@
     Keywait, c, U
     Input, key, L2 T0.3
 
-    selecter = win ; win, Linux, win_backの3つ
-    If key=c    ; cを二回押しでlinux (WSL)、三回押しでバックスラッシュのwinのパスに変換
-        selecter = linux
+    selecter = win ; win, wsl, win_backの3つ
+    If key=c    ; cを二回押しでWSL、三回押しでバックスラッシュのwinのパスに変換
+        selecter = wsl
     If key=cc
         selecter = win_back
 
@@ -73,18 +73,19 @@
     {
         StringReplace, clipboard, clipboard, \, /, All
     }
-    
-    If selecter=linux
+
+    If selecter=wsl
+    ; ホームディレクトリをWSL向けに変換
     {
         StringReplace, clipboard, clipboard, \, /, All
 
-        win_homedir := "C:/Users/"
-        linux_homedir := "/mnt/c/Users/"
+        StringLeft, drive_name_large, clipboard, 1
+        StringLower, drive_name_small, drive_name_large
 
-        win_homedir := win_homedir . A_UserName
-        linux_homedir := linux_homedir . A_UserName
+        win_homedir := drive_name_large . ":/"
+        wsl_homedir := "/mnt/" . drive_name_small . "/"
 
-        StringReplace, clipboard, clipboard, %win_homedir%, %linux_homedir%, All ; ホームディレクトリをlinux向けに変換
+        StringReplace, clipboard, clipboard, %win_homedir%, %wsl_homedir%, All
     }
 
     If selecter=win_back
