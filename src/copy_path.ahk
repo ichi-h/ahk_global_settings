@@ -22,9 +22,11 @@
     Keywait, c, U
     Input, key, L2 T0.3
 
-    bool = False
-    If key=c    ; cを二回押しでlinux (WSL)のパスに変換
-        bool = True
+    selecter = win ; win, Linux, win_backの3つ
+    If key=c    ; cを二回押しでlinux (WSL)、三回押しでバックスラッシュのwinのパスに変換
+        selecter = linux
+    If key=cc
+        selecter = win_back
 
     If WinActive("ahk_class CabinetWClass")
     {
@@ -56,6 +58,7 @@
 
         fullpath := GetSelectedFilePath(FileName)
         
+        StringReplace, fullpath, fullpath, \, /, All
         clipboard := fullpath
     }
 
@@ -65,11 +68,19 @@
 
         fullpath := GetSelectedFilePath(FileName)
         
+        
         clipboard := fullpath
     }
 
-    If bool=True
+    If selecter=win
     {
+        StringReplace, clipboard, clipboard, \, /, All
+    }
+    
+    If selecter=linux
+    {
+        StringReplace, clipboard, clipboard, \, /, All
+
         windir := "C:/Users/"
         linuxdir := "/mnt/c/Users/"
 
@@ -77,6 +88,11 @@
         linuxdir := linuxdir . A_UserName
 
         StringReplace, clipboard, clipboard, %windir%, %linuxdir%, All ; ホームディレクトリをlinux向けに変換
+    }
+
+    If selecter=win_back
+    {
+        StringReplace, clipboard, clipboard, /, \, All
     }
 
     return
@@ -89,8 +105,6 @@ GetSelectedFilePath(FileName)
     fullpath := A_Desktop
     if FileName != 
         fullpath := fullpath . "/" . FileName
-    
-    StringReplace, fullpath, fullpath, \, /, All ; \を/に変換
     
     return fullpath
 }
