@@ -1,6 +1,6 @@
 ﻿/*
     # terminal.ahk
-    CapsLock+CでGit Bashの起動
+    CapsLock+CでWindows Terminal (wt) の起動
 
     ## 注意
     レジストリでCapsLockをAppsKeyに変更しています
