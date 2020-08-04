@@ -25,7 +25,7 @@
     selecter = win ; win, wsl, win_backの3つ
     If key=c    ; cを二回押しでWSL、三回押しでバックスラッシュのwinのパスに変換
         selecter = wsl
-    If key=cc
+    Else If key=cc
         selecter = win_back
 
     If WinActive("ahk_class CabinetWClass")
@@ -47,7 +47,7 @@
         clipboard := fullpath
     }
     
-    If WinActive("ahk_class Progman")
+    Else If WinActive("ahk_class Progman")
     {
         hBuf := DllCall("user32\FindWindow", "Str", "Progman", "UInt", 0, "UInt")
         hBuf := DllCall("user32\FindWindowEx", "UInt", hBuf, "UInt", 0, "Str", "SHELLDLL_DefView", "UInt", 0, "UInt")
@@ -60,7 +60,7 @@
         clipboard := fullpath
     }
 
-    If WinActive("ahk_class WorkerW")
+    Else If WinActive("ahk_class WorkerW")
     {
         ControlGet, FileName, List, Selected, SysListView321, ahk_class WorkerW ; 選択中のファイルの情報をゲット
 
@@ -74,7 +74,7 @@
         StringReplace, clipboard, clipboard, \, /, All
     }
 
-    If selecter=wsl
+    Else If selecter=wsl
     ; ホームディレクトリをWSL向けに変換
     {
         StringReplace, clipboard, clipboard, \, /, All
@@ -88,7 +88,7 @@
         StringReplace, clipboard, clipboard, %win_homedir%, %wsl_homedir%, All
     }
 
-    If selecter=win_back
+    Else If selecter=win_back
     {
         StringReplace, clipboard, clipboard, /, \, All
     }

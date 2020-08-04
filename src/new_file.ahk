@@ -30,15 +30,12 @@
         window := ""
         
         FileAppend,, %fullpath%\new_file
-
-        return
     }
 
     Else If WinActive("ahk_class Progman") or WinActive("ahk_class WorkerW")
     ; デスクトップがアクティブな時
     {
         FileAppend,, %A_Desktop%\new_file
-        return
     }
 
     return

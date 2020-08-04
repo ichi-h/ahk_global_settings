@@ -33,20 +33,18 @@ AppsKey & c::
         window := ""
         
         Run wt.exe -d "%fullpath%" ; 選択中のファイルのディレクトリでwtを起動
-
-        return
     }
 
     Else If WinActive("ahk_class Progman") or WinActive("ahk_class WorkerW")
     ; デスクトップがアクティブな時
     {
         Run wt.exe -d "%A_Desktop%"
-        return
     }
 
     Else
     ; それ以外の時
     {
         Run wt.exe
-        return
     }
+
+    return
