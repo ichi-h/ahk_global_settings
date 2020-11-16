@@ -21,6 +21,9 @@ AppsKey::Enter ; CapsLock単体 -> Enter
     return
 AppsKey up::Return
 
+; 左手Del
+sc07B & AppsKey::del
+
 ; Alt + CapsLock -> Shift + Alt + Tab
 <!AppsKey::ShiftAltTab
 
@@ -39,9 +42,3 @@ sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
     Send, {Blind}
     Send, !{F4} ; Alt+Q -> Alt + F4
     return
-
-; Enterキーを増やす
-; sc07B & e::
-;     Send, {Blind}
-;     Send, {Enter}
-;     return
