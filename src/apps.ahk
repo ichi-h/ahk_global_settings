@@ -16,6 +16,6 @@ AppsKey & e::
     Send, {Blind}
     return
 
-; コマンドのメモを表示
-; デスクトップにメモを配置しており、コマンドを忘れた時に起動する
-AppsKey & F1::Run "%A_Desktop%/Command.txt"
+; チートシートの呼び出し
+AppsKey & F1::Run "%A_MyDocuments%/cheat_sheet/command.txt"
+AppsKey & F2::Run "%A_MyDocuments%/cheat_sheet/english.txt"
