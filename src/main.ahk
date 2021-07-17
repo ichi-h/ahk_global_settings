@@ -28,3 +28,4 @@ SetTitleMatchMode,2
 #Include new_file.ahk
 #Include terminal.ahk
 #Include vim.ahk
+#Include touchpad.ahk
