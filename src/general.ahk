@@ -18,7 +18,7 @@
 AppsKey::Enter ; CapsLock単体 -> Enter
 AppsKey up::Return ; 連打バグ対策
 
-; 左手エンター
+; 左手BS
 +AppsKey::BS ; Shift + CapsLock -> BackSpace
 
 ; 左手Del
