@@ -10,12 +10,6 @@
 
 ; -------------------------------------------------- ;
 
-; エクスプローラー
-AppsKey & e::
-    Send, #e ; CapsLock+E -> Win+E
-    Send, {Blind}
-    return
-
 ; チートシートの呼び出し
 AppsKey & F1::Run "%A_MyDocuments%/cheat_sheet/command.txt"
 AppsKey & F2::Run "%A_MyDocuments%/cheat_sheet/english.txt"
