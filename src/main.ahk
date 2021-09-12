@@ -27,5 +27,6 @@ SetTitleMatchMode,2
 #Include copy_path.ahk
 #Include new_file.ahk
 #Include terminal.ahk
+#Include emacs.ahk
 #Include vim.ahk
 #Include touchpad.ahk
