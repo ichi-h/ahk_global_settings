@@ -34,8 +34,11 @@ sc07B & AppsKey::del ; 無変換 + CapsLock -> Del
     return
 
 ; 仮想デスクトップの切り替え
-sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
-+sc079::Send,#^{Left}   ; Shift+変換 -> Ctrl + Win + Left
+; sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
+; +sc079::Send,#^{Left}   ; Shift+変換 -> Ctrl + Win + Left
+
+; 半角/全角切り替え
+sc079::sc029
 
 ; ウィンドウを閉じる
 !q::
