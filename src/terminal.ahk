@@ -3,7 +3,7 @@
     CapsLock+CでWindows Terminal (wt) の起動
 
     ## 注意
-    レジストリでCapsLockをAppsKeyに変更しています
+    レジストリでCapsLockを右Ctrl (>^) に変更しています
 
     ## ライセンス
     Copyright (c) 2020 Ippee
@@ -17,7 +17,7 @@
 
 ; -------------------------------------------------- ;
 
-AppsKey & c::
+>^c::
     sleep 50
 
     If WinActive("ahk_class CabinetWClass")

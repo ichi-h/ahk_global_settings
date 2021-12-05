@@ -11,5 +11,5 @@
 ; -------------------------------------------------- ;
 
 ; チートシートの呼び出し
-AppsKey & F1::Run "%A_MyDocuments%/cheat_sheet/command.txt"
-AppsKey & F2::Run "%A_MyDocuments%/cheat_sheet/english.txt"
+>^F1::Run "%A_MyDocuments%/cheat_sheet/command.txt"
+>^F2::Run "%A_MyDocuments%/cheat_sheet/english.txt"
