@@ -76,7 +76,10 @@ sc07B & o::
 /*
     基本的なコマンド
 */
-; Redo (Undoは複合コマンドへ)
+; Undo
+sc07B & u::^z
+
+; Redo
 ; sc07B & r::
 ;     If GetKeyState(LCtrl, "P")
 ;         Send, {blind}^+z
@@ -175,81 +178,58 @@ sc07B & v::
     (一つのキーに複数のコマンドが当てられている)
 */
 sc07B & d::
-    If GetKeyState("AppsKey", "P")
-    ; AppsKey & d => PgDn
+    Keywait, d, U
+    Input, key, L1 T0.5
+
+    If key=d
+    ; dd => 行削除
     {
-        Send, {PgDn}
-        Return
+        Send, {End}+{Home 2}{del 2}
+        Sleep, 100
+        Send, {End}
     }
 
-    Else
+    If key=i
     {
-        Keywait, d, U
-        Input, key, L1 T0.5
+        Keywait, i, U
+        Input, key, L1 T1
 
-        If key=d
-        ; dd => 行削除
+        If key=w
+        ; diw => 単語削除
         {
-            Send, {End}+{Home 2}{del 2}
-            Sleep, 100
-            Send, {End}
+            Send, ^{Right}^+{Left}
+            Sleep, 50
+            Send, {BS}
+            Return
         }
 
-        If key=i
-        {
-            Keywait, i, U
-            Input, key, L1 T1
+        ; diX => Xで包まれた括弧の中身を消す
+        key := Asc(key)
 
-            If key=w
-            ; diw => 単語削除
-            {
-                Send, ^{Right}^+{Left}
-                Sleep, 50
-                Send, {BS}
-                Return
-            }
+        clip_escape := Clipboard ; クリップボードを避難
 
-            ; diX => Xで包まれた括弧の中身を消す
-            key := Asc(key)
+        Send, +{Home} ; 左側を選択
+        Send, ^{c}
+        Sleep, 30
+        Send, {BS}
+        RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--left" "%key%"
+        Send, ^{v}
 
-            clip_escape := Clipboard ; クリップボードを避難
+        Send, +{End} ; 右側を選択
+        Send, ^{c}
+        Sleep, 30
+        Send, {BS}
+        RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--right" "%key%"
+        Send, ^{v}
 
-            Send, +{Home} ; 左側を選択
-            Send, ^{c}
-            Sleep, 30
-            Send, {BS}
-            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--left" "%key%"
-            Send, ^{v}
+        Send, {ShiftUp}
 
-            Send, +{End} ; 右側を選択
-            Send, ^{c}
-            Sleep, 30
-            Send, {BS}
-            RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--right" "%key%"
-            Send, ^{v}
+        right_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "", ReplacementCount)
+        str_len := StrLen(right_clip) + %ReplacementCount%
+        Send, {Left %str_len%}
 
-            Send, {ShiftUp}
-
-            right_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "", ReplacementCount)
-            str_len := StrLen(right_clip) + %ReplacementCount%
-            Send, {Left %str_len%}
-
-            Sleep, 30
-            Clipboard := clip_escape ; クリップボードを復活
-        }
-        Return
+        Sleep, 30
+        Clipboard := clip_escape ; クリップボードを復活
     }
+    Return
 
-sc07B & u::
-    If GetKeyState("AppsKey", "P")
-    ; AppsKey & u => PgUp
-    {
-        Send, {PgUp}
-        Return
-    }
-    Else
-    ; u => Undo
-    {
-        Send, ^z
-        Return
-    }
