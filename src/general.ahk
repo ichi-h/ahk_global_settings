@@ -13,6 +13,10 @@
 
 ; -------------------------------------------------- ;
 
+; タブ移動
+>^h::Send, ^+{Tab}
+>^l::Send, ^{Tab}
+
 ; 左手BS
 <+RCtrl::BS ; Shift + CapsLock -> BackSpace
 
