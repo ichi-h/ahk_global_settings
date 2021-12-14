@@ -38,4 +38,9 @@
         FileAppend,, %A_Desktop%\new_file
     }
 
+    Else
+    {
+        Send, !+n
+    }
+
     return
