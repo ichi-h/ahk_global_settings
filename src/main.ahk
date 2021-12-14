@@ -1,11 +1,7 @@
 ﻿/*
-    # main.ahk
-    設定した.ahkをIncludeし、実行
-
-    ## ライセンス
-    Copyright (c) 2020 Ippee
-    本アプリは GNU General Public License v2.0 の基で公開されています
-    GitHub: https://github.com/ippee/AutoHotkeySettings/blob/master/LICENSE
+    Copyright (c) 2021 Ichi
+    本アプリは Mozilla Public License Version 2.0 の基で公開されています
+    GitHub: https://github.com/ichi-h/ahk_global_settings/blob/master/LICENSE
 */
 
 ; -------------------------------------------------- ;

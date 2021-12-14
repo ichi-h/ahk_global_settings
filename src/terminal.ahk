@@ -1,14 +1,10 @@
 ﻿/*
-    # terminal.ahk
-    CapsLock+CでWindows Terminal (wt) の起動
+    Copyright (c) 2021 Ichi
+    本アプリは Mozilla Public License Version 2.0 の基で公開されています
+    GitHub: https://github.com/ichi-h/ahk_global_settings/blob/master/LICENSE
 
     ## 注意
     レジストリでCapsLockを右Ctrl (>^) に変更しています
-
-    ## ライセンス
-    Copyright (c) 2020 Ippee
-    本アプリは GNU General Public License v2.0 の基で公開されています
-    GitHub: https://github.com/ippee/AutoHotkeySettings/blob/master/LICENSE
 
     ## 参考:
     1. AutohotkeyとWindows 10：現在のエクスプローラパスを取得する方法
