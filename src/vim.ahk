@@ -23,25 +23,6 @@ sc07B & l::Send, {Blind}{right}
 sc07B & w::Send, {Blind}^{right}
 sc07B & b::Send, {Blind}^{left}
 
-; ページの先頭・最後へ
-sc07B & g::
-    If GetKeyState("Shift", "P")
-    ; G => ページトップへ
-    {
-        Send, ^{End}
-        Return
-    }
-    
-    Keywait, g, U
-    Keywait, g, D T0.5
-
-    If ErrorLevel=0
-    ; gg => ページエンドへ
-    {
-        Send, ^{Home}
-        Return
-    }
-
 ; Home, End
 sc07B & a::
     If GetKeyState("Shift", "P")
@@ -88,44 +69,6 @@ sc07B & u::^z
 ; Yank, Put
 sc07B & y::Send, ^{c}
 sc07B & p::Send, ^{v}
-
-
-/*
-    コマンドラインモード
-*/
-sc07B & sc028::
-    Keywait, sc028, U
-    Input, key,, {Enter}{Esc}
-    
-    If ErrorLevel=Esc
-        Return
-    
-    If key=w
-    ; :w => 保存（書き込み）
-        Send, ^{s}
-    
-    Else If key=q
-    ; :q => 閉じる
-        Send, ^{w}
-    
-    Else If key=wq
-    ; :wq => 保存して閉じる
-    {
-        Send, ^{s}
-        Sleep, 100
-        Send, ^{w}
-    }
-
-    Else If key=q!
-    ; :q! => 強制終了（vscode準拠）
-    {
-        Send, ^{w}
-        Sleep, 500
-        Send, {Right}
-        Send, {Enter}
-    }
-
-    Return
 
 
 
@@ -232,4 +175,3 @@ sc07B & d::
         Clipboard := clip_escape ; クリップボードを復活
     }
     Return
-
