@@ -28,8 +28,8 @@
 <^RCtrl::Send, ^+{Tab}
 
 ; 仮想デスクトップの切り替え
-; sc079::Send,#^{Right}   ; 変換 -> Ctrl + Win + Right
-; +sc079::Send,#^{Left}   ; Shift+変換 -> Ctrl + Win + Left
+>^#l::Send, {Blind}#^{Right} ; Windows + CapsLock + l -> Ctrl + Win + Right
+>^#h::Send, {Blind}#^{Left} ; Windows + CapsLock + h -> Ctrl + Win + Left
 
 ; 半角/全角切り替え
 sc079::sc029
