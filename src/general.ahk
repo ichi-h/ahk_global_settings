@@ -24,18 +24,12 @@
 ; Alt + CapsLock -> Shift + Alt + Tab
 <!RCtrl::ShiftAltTab
 
-; Ctrl + CapsLock -> Shift + Ctrl + Tab
-<^RCtrl::Send, ^+{Tab}
-
 ; 仮想デスクトップの切り替え
 >^#l::Send, {Blind}#^{Right} ; Windows + CapsLock + l -> Ctrl + Win + Right
 >^#h::Send, {Blind}#^{Left} ; Windows + CapsLock + h -> Ctrl + Win + Left
 
 ; 半角/全角切り替え
-sc079::sc029
+>^Space::Send, {sc029}
 
 ; ウィンドウを閉じる
-!q::
-    Send, {Blind}
-    Send, !{F4} ; Alt+Q -> Alt + F4
-    return
+!q::Send, !{F4} ; Alt+Q -> Alt + F4
