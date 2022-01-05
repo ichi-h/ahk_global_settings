@@ -7,7 +7,7 @@
 
 ### main.ahk
 
-下５つの .ahk を `Include` し、まとめて実行。
+以下4つの .ahk を `Include` し、まとめて実行。
 
 ### apps.ahk
 
@@ -15,23 +15,11 @@
 
 ### copy_path.ahk
 
-**Ctrl + Shift + C** で選択したファイルや現在のフォルダーのパスをコピー。
+パスをクリップボードにコピーするショートカットキー。
 
 ### general.ahk
 
 基本的な動作のショートカットキー。
-
-### new_file.ahk
-
-空のファイルを生成するショートカット。
-
-### terminal.ahk
-
-**CapsLock + C** で Windows Terminal を起動。
-
-### touchpad.ahk
-
-タッチパッドの挙動を制御するスクリプト。
 
 ### vim.ahk
 
