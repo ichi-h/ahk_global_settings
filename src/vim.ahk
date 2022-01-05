@@ -53,15 +53,6 @@ sc07B & o::
 /*
     基本的なコマンド
 */
-; Undo
-sc07B & u::^z
-
-; Redo
-; sc07B & r::
-;     If GetKeyState(LCtrl, "P")
-;         Send, {blind}^+z
-;     Return
-
 ; Yank, Put
 sc07B & y::Send, ^{c}
 sc07B & p::Send, ^{v}
@@ -141,33 +132,6 @@ sc07B & d::
             Send, {BS}
             Return
         }
-
-        ; diX => Xで包まれた括弧の中身を消す
-        key := Asc(key)
-
-        clip_escape := Clipboard ; クリップボードを避難
-
-        Send, +{Home} ; 左側を選択
-        Send, ^{c}
-        Sleep, 30
-        Send, {BS}
-        RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--left" "%key%"
-        Send, ^{v}
-
-        Send, +{End} ; 右側を選択
-        Send, ^{c}
-        Sleep, 30
-        Send, {BS}
-        RunWait "%A_WorkingDir%\di_command\target\release\di_command.exe" "--right" "%key%"
-        Send, ^{v}
-
-        Send, {ShiftUp}
-
-        right_clip := RegExReplace(Clipboard, "^[\w#@$\?\[\]]{1,253}$", Replacement = "", ReplacementCount)
-        str_len := StrLen(right_clip) + %ReplacementCount%
-        Send, {Left %str_len%}
-
-        Sleep, 30
-        Clipboard := clip_escape ; クリップボードを復活
     }
+
     Return
