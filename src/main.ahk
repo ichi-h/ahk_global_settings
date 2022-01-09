@@ -18,7 +18,8 @@ SetTitleMatchMode,2
 
 #Include %A_ScriptDir%
 
-#Include general.ahk
 #Include apps.ahk
 #Include copy_path.ahk
+#Include emacs.ahk
+#Include general.ahk
 #Include vim.ahk
