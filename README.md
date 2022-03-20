@@ -7,7 +7,7 @@
 
 ### main.ahk
 
-以下4つの .ahk を `Include` し、まとめて実行。
+以下3つの .ahk を `Include` し、まとめて実行。
 
 ### apps.ahk
 
@@ -20,10 +20,6 @@
 ### general.ahk
 
 基本的な動作のショートカットキー。
-
-### vim.ahk
-
-vim風のコマンドの設定。
 
 ## ライセンス
 
