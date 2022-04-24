@@ -7,8 +7,8 @@
 ; -------------------------------------------------- ;
 
 ; 仮想デスクトップの切り替え
-#+l::Send, #^{Right} ; Windows + CapsLock + l -> Ctrl + Win + Right
-#+h::Send, #^{Left} ; Windows + CapsLock + h -> Ctrl + Win + Left
+!l::Send, #^{Right} ; Windows + CapsLock + l -> Ctrl + Win + Right
+!h::Send, #^{Left} ; Windows + CapsLock + h -> Ctrl + Win + Left
 
 ; ウィンドウを閉じる
 !q::Send, !{F4} ; Alt+Q -> Alt + F4
