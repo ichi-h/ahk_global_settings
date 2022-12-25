@@ -7,12 +7,12 @@
 ; -------------------------------------------------- ;
 
 ; 仮想デスクトップの切り替え
-<+<^l::Send, #^{Right}
-<+<^h::Send, #^{Left}
+<+<!l::Send "#^{Right}"
+<+<!h::Send "#^{Left}"
 
 ; タブの切り替え
-<^l::Send, ^{Tab}
-<^h::Send, +^{Tab}
+<!l::Send "^{Tab}"
+<!h::Send "+^{Tab}"
 
 ; ウィンドウを閉じる
-!q::Send, !{F4} ; Alt+Q -> Alt + F4
+!q::Send "!{F4}" ; Alt+Q -> Alt + F4
